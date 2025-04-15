@@ -21,6 +21,3 @@ jobs:
               run : npm ci 
             - name: Unit Test
               run: npm run test
-        #0. Checkout the code from repository
-        #1. Install deps of react app
-        #2.  Execute automated tests
