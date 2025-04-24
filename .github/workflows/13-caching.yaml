@@ -11,6 +11,9 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: 13-caching/react-app
         steps:
             - name: Checkout Code
               uses: actions/checkout@v4
@@ -18,12 +21,11 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: '20.x'
+            - name: Install dependencies
+              run: npm ci
             - name: Testing
               run: npm run test
-              working-directory: 13-caching/react-app
             - name: Building
               run: npm run build
-              working-directory: 13-caching/react-app
             - name: Deploy to Non Prod
               run: echo "Deploying to non-prod"
-              working-directory: 13-caching/react-app
