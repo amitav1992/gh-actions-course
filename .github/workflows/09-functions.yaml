@@ -13,7 +13,7 @@ jobs:
           - name: Print PR Labels
             run: |
               cat << EOF
-                ${{ toJson(github.event.pull_request.label) }}"
+                ${{ toJSON(github.event.pull_request.label) }}"
               EOF
           - name: Bug Step
             if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix')}}
