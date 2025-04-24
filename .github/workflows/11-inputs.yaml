@@ -1,7 +1,6 @@
 name: 11- Using Inputs 
 
 on:
-    push:
     workflow_dispatch:
         inputs:
             dry-run:
@@ -32,6 +31,9 @@ jobs:
     deploy:
         runs-on: ununtu-latest
         if: ${{ !inputs.dry-run }}
+        environment: ${{ inputs.target }}
+        needs:
+            - build
         steps:
             - name: Deploy
               run: echo "Deploying to prod ${{ inputs.target }}"
